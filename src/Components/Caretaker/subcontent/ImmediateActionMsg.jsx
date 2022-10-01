@@ -18,8 +18,8 @@ function ImmediateActionMsg() {
     body: JSON.stringify({id: localStorage.getItem("id")}),
   });
   const content = await response.json();
-  console.log(content.action.message[0]);
-  setMsg(content.action.message[0]);
+  console.log(content.action[0].message);
+  setMsg(content.action[0].message);
   setT(true);
   
 }

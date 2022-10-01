@@ -7,11 +7,31 @@ function addNews() {
   const[news,setNews] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const[date,setDate] = useState("");
-  const handleSubmit = () => {
+  let token = "Bearer "+localStorage.getItem("token");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const[t,setT]=useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const[m,setM]=useState("");
+  
+
+
+  const handleSubmit = async () => {
     console.log("title: ",title," Date: ",date, " News: ",news);
-    setDate("");
-    setNews("");
-    setTitle("");
+    const response = await fetch(process.env.REACT_APP_BASE_URL+"admin/news", {
+      method: "POST",
+      headers: {
+        "Authorization" : token,
+        "Content-Type": "application/json" },
+      body: JSON.stringify({title:title,description: news,date:date}),
+    });
+    const content = await response.json();
+    console.log(content);
+    setM(content.message);
+    setTimeout(function(){
+      setM("");
+    },5000);
+    setT(true);
+    
   }
   return (
     <>
@@ -44,6 +64,10 @@ function addNews() {
             </tbody>
           </table>
       </div>
+<br/>
+      {
+        t && <div className='flex justify-center items-center'>{m}</div>
+      }
     </>
   )
 }
