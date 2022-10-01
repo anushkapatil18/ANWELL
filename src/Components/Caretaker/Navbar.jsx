@@ -34,12 +34,12 @@ function NavBar() {
                     Actions Need
                   </Link>
 
-                  <Link
-                    to="/caretaker/gpsTracker"
+                  <a
+                    href="https://api.maptiler.com/maps/basic-v2/?key=FLIYnkmbaKY2hg7u8TOF#0.7/-16.8/36.6"
                     className=" hover:bg-gray-700 hover:text-white text-black px-3 py-2 rounded-md text-sm font-medium"
                   >
                     GPS
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

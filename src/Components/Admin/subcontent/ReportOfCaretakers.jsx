@@ -40,6 +40,9 @@ function ReportOfCaretakers() {
               <th scope="col" className="py-7 px-6">
                 Past surgeries
               </th>
+              <th scope="col" className="py-7 px-6">
+                Abuse History
+              </th>
             </tr>
           </thead>
           <tbody>
