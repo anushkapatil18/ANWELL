@@ -1,6 +1,6 @@
 import { Button } from '@material-tailwind/react'
 import React from 'react'
-import { useState } from 'react';
+import { useState,useRef,useEffect } from 'react';
 
 function AnimalDetails() {
   const[t,setT] = useState(false);
@@ -9,16 +9,39 @@ function AnimalDetails() {
     setT(true);
   }
 
+  var token = "Bearer "+localStorage.getItem("token");
+  const[data,setData] = useState([]);
+
+  async function CallApi2(){
+    const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/getAnimal", {
+      method: "POST",
+      headers: { 
+        "Authorization": token,
+        "Content-Type": "application/json" },
+        body: JSON.stringify({id: localStorage.getItem("id")})
+    });
+    const content = await response.json();
+    console.log(content);
+    setData(content.animal);
+  }
+
+
+  const dataFetchedRef=useRef(false);
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    CallApi2();
+  }, [])
+  
+
   return (
     <>
     <div className="relative w-full lg:max-w-sm p-1.5 my-6 mx-96">
-            <select onChange={handleChange} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
+            <select onChange={(e) => handleChange(e)} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
             <option disabled selected value> -- select an option -- </option>
-            
-                <option value="2367">Id:2367Deer</option>
-                <option value="9683" >Id:9683Elephant</option>
-                <option value="2486">Id:2486Lion</option>
-                <option>Id:1738Elephant</option>
+            {data.map((c) => {
+              return(<option value={c.id}>{c.id}</option>)
+            })}
             </select>
         </div>
        {t &&  

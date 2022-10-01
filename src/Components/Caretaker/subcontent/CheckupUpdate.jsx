@@ -1,19 +1,55 @@
-import React from 'react'
+import React,{useRef,useEffect} from 'react'
 import { useState } from 'react'
 
 function CheckUpdate() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const[title,setTitle] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const[news,setNews] = useState("");
+  const[feedback,setFeedback] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const[date,setDate] = useState("");
-  const handleSubmit = () => {
-    console.log("title: ",title," Date: ",date, " News: ",news);
-    setDate("");
-    setNews("");
-    setTitle("");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const[id,setId] = useState("");
+
+  const handleSubmit = async() => {
+    const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/createMessage", {
+      method: "POST",
+      headers: { 
+        "Authorization": token,
+        "Content-Type": "application/json" },
+        body: JSON.stringify({animalId: id,date: date,feedback: feedback}),
+  });
+  const content = await response.json();
+  console.log(content);
+
+
+}
+
+  var token = "Bearer "+localStorage.getItem("token");
+  const[data,setData] = useState([]);
+
+  async function CallApi2(){
+    const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/getAnimal", {
+      method: "POST",
+      headers: { 
+        "Authorization": token,
+        "Content-Type": "application/json" },
+        body: JSON.stringify({id: localStorage.getItem("id")})
+    });
+    const content = await response.json();
+    console.log(content);
+    setData(content.animal);
   }
+
+  const dataFetchedRef=useRef(false);
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    CallApi2();
+  }, [])
+  
+
+
   return (
     <>
       <div className="flex items-center justify-center mt-20 text-md m-auto">
@@ -23,13 +59,11 @@ function CheckUpdate() {
             <tbody>
             <tr>
               <td className='px-6 py-4 whitespace-nowrap'>Animal ID </td>
-              <td className='px-6 py-4 whitespace-nowrap'><select className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
+              <td className='px-6 py-4 whitespace-nowrap'><select onChange={(e) => setId(e.target.value)} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
             <option disabled selected value> -- select an option -- </option>
-            
-                <option value="2367">Id:2367Deer</option>
-                <option value="9683" >Id:9683Elephant</option>
-                <option value="2486">Id:2486Lion</option>
-                <option>Id:1738Elephant</option>
+            {data.map((c) => {
+              return(<option value={c.id}>{c.id}</option>)
+            })}
             </select></td>
             </tr>
             <tr >
@@ -41,7 +75,7 @@ function CheckUpdate() {
                 Feedback
               </td>
               <td className='px-6 py-4 whitespace-nowrap'>
-                <textarea value={news} className='border w-80 h-40' name="news" placeholder="Description..." onChange={(e) => setNews(e.target.value)}/>
+                <textarea value={feedback} className='border w-80 h-40' name="feedback" placeholder="Note..." onChange={(e) => setFeedback(e.target.value)}/>
               </td>
             </tr>
            
