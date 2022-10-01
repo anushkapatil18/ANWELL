@@ -26,23 +26,24 @@ function App() {
   <Routes>
 <Route path="/" element={<UserPage />} />
 <Route path="/login" element={<Login />} />
+
   <Route path="/admin" element={<Admin />}>
   <Route path="home" element={<Home />} />
   <Route path="reportOfCaretakers" element={<ReportOfCaretakers />} />
   <Route path="addNews" element={<AddNews />} />
   <Route path="immediateActions" element={<ImmediateActions />} />
-
   </Route>
+
+  
   <Route path="/caretaker" element={<Caretaker />}>
   <Route path="home" element={<Home />} />
   <Route path="animalDetails" element={<AnimalDetails />} />
   <Route path="checkupUpdate" element={<CheckupUpdate />} />
   <Route path="actions" element={<ImmediateActionsMsg />} />
   <Route path="gpsTracker" element={<GpsTracker />} />
+</Route>
 
 
-  
-  </Route>
   </Routes>
 </Router>
     </>
