@@ -13,6 +13,7 @@ export default function Login() {
           });
           const content = await response.json();
           localStorage.setItem("token",content.token);
+          localStorage.setItem("id",content.user._id);
           console.log("token",localStorage.getItem("token"));
           var role = content.user.role;
         switch(role){
