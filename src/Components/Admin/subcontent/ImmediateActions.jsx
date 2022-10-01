@@ -34,50 +34,50 @@ function immediateActions() {
           }
 <div className="ml-24 my-24">
     
-    <table class="class=state-fixed border-2 border border-lime-600 text-center" >
+    <table class="class=state-fixed  border-2 border-lime-600 text-center" >
   <thead>
     <tr>
-      <th class="border border-slate-300 p-8 border-2 border-lime-600 text-center">Caretaker Name</th>
-      <th class="border border-slate-300 p-8 border-2 border-lime-600 text-center ">Contact</th>
-      <th class="border border-slate-300 p-8 border-2 border-lime-600 text-center">E-mail</th>
-      <th class="border border-slate-300 p-8 border-2 border-lime-600 text-center " >No.of animals assigned</th>
-      <th class="border border-slate-300 p-8 border-2  border-lime-600 text-center" >Specialist in</th>
+      <th class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">Caretaker Name</th>
+      <th class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center ">Contact</th>
+      <th class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">E-mail</th>
+      <th class="border border-slate-300 p-6 text-lg border-2  border-lime-600 text-center " >No.of animals assigned</th>
+      <th class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center" >Specialist</th>
       
-      <th class="border border-slate-300 p-8 border-2  border-lime-600 text-center"></th>
+      <th class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center"></th>
 
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">Rohan</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">9505946698</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">john123@gmail.com</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">6</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center"></td>
+      <td class="border border-slate-300 p-6 text-lg border-2  border-lime-600 text-center">Rohan</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">9505946698</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">john123@gmail.com</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">6</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">Bones</td>
 
-      <td class="border border-slate-300 p-8 "><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action 
+      <td class="border border-slate-300 p-6 border-2 border-lime-600 text-center "><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action 
      
           
     </button></td>
     </tr>
     <tr>
-    <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">Rehan</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center ">9234946698</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">rahul123@gmail.com</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center">5</td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center"></td>
-      <td class="border border-slate-300 p-8 border-2 border-lime-600 text-center"><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action
+    <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">Rehan</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center ">9234946698</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">rahul123@gmail.com</td>
+      <td class="border border-slate-300 p-6 text-lg border-2  border-lime-600 text-center">5</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center">Teeth</td>
+      <td class="border border-slate-300 p-6 text-lg border-2 border-lime-600 text-center"><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action
       
 
           </button></td>
     </tr>
     <tr>
-    <td class="border border-slate-300 p-8 border-lime-600 text-center ">Rahul</td>
-      <td class="border border-slate-300  p-8 border-2 border-lime-600 text-center">9234946622</td>
-      <td class="border border-slate-300  p-8 border-2 border-lime-600 text-center">rehan23@gmail.com</td>
-      <td class="border border-slate-300  p-8 border-2 border-lime-600 text-center">4</td>
-      <td class="border border-slate-300  p-8 border-2 border-lime-600 text-center"></td>
-      <td class="border border-slate-300  p-8 border-2 border-lime-600 text-center"><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action
+    <td class="border border-slate-300 p-8 text-lg border-2 border-lime-600 text-center ">Rahul</td>
+      <td class="border border-slate-300 text-lg  p-8 border-2 border-lime-600 text-center">9234946622</td>
+      <td class="border border-slate-300 text-lg  p-8 border-2 border-lime-600 text-center">rehan23@gmail.com</td>
+      <td class="border border-slate-300 text-lg  p-8 border-2 border-lime-600 text-center">4</td>
+      <td class="border border-slate-300 text-lg  p-8 border-2  border-lime-600 text-center">muscles</td>
+      <td class="border border-slate-300 text-lg p-8 border-2 border-lime-600 text-center"><button type="button" onClick={handleChange} className="border-md bg-lime-500/75 p-2 text-white rounded-lg">Action
    </button></td>
     </tr>
   </tbody>
