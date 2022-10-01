@@ -12,7 +12,7 @@ export default function Login() {
             body: JSON.stringify({username: name,password: password}),
           });
           const content = await response.json();
-          localStorage.setItem("token",content.user._id);
+          localStorage.setItem("token",content.token);
           console.log("token",localStorage.getItem("token"));
           var role = content.user.role;
         switch(role){
