@@ -1,19 +1,20 @@
-import React from 'react'
+import React from 'react';
 import "../index.css"
+
 
 function Home() {
   return (
-    <div class="m">
+    <div style={{ 
+      backgroundImage: `url("https://d2evkimvhatqav.cloudfront.net/images/_960xAUTO_crop_center-center_none/mother_cow_calf_31883069.jpg?v=1650463658,0.6021,0.4284")` 
+    }}className="py-8 px-80 bg-slate-100 text-white text-xl">
 		<marquee class="marq"
-				bgcolor="Green"
 				direction="down"
 				behavior="scroll"
 				loop="60">
-		<p className='h-20'>The  tag in HTML is used to create scrolling text or images in a webpage. It scrolls either from horizontally left to right or right to left, or vertically top to bottom or bottom to top.
+		<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
+		<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
+    	<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
 
-In this article, we will set the direction and behavior of the marquee tag in HTML
-
-Syntax: The marquee element comes in pairs. It means that the tag has an opening and closing elements.</p>
 		</marquee>
 	</div>
   )

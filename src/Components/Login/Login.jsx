@@ -8,10 +8,10 @@ export default function Login() {
         // eslint-disable-next-line default-case
         switch(role){
             case "admin":
-                navigate("/admin");
+                navigate("/admin/home");
                 break;
             case "caretaker":
-                navigate("/caretaker");
+                navigate("/caretaker/home");
                 break;
             default:
                 navigate("/login");
@@ -19,7 +19,7 @@ export default function Login() {
     }
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-green-600/40 ring ring-2 bg-lime-200 lg:max-w-xl">
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md shadow-green-600/40 ring ring-2 bg-lime-200 lg:max-w-xl">
              
                     <div className="mb-2">
                         <label
@@ -30,7 +30,7 @@ export default function Login() {
                         </label>
                         <input
                             type="text"
-                            className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-green-400 focus:ring-green-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:border-green-400 focus:ring-green-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                     </div>
                     <div className="mb-2">
@@ -42,7 +42,7 @@ export default function Login() {
                         </label>
                         <input
                             type="password"
-                            className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md focus:outline-none focus:border-green-400 focus:ring-green-300 focus:ring focus:ring-opacity-40"
                         />
                     </div>
                     <div className="mt-6">
