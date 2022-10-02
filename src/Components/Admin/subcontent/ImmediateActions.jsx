@@ -12,6 +12,8 @@ function immediateActions() {
   const[m,setM]=useState([]);
     // eslint-disable-next-line react-hooks/rules-of-hooks
   const[msg,setMsg] = useState("");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const[a,setA]=useState([]);
 
   const handleChange= (e)=>{
     setT(true);
@@ -29,6 +31,12 @@ function immediateActions() {
     const content = await response.json();
     
     console.log(content);
+    setT(false);
+    setA(content.message);
+    setTimeout(function(){
+      setM("");
+    },5000);
+    setT(true);
   }
 
   async function CallApi(){
@@ -44,7 +52,9 @@ function immediateActions() {
     console.log(content.message);
     setM(content.careTakers);
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dataFetchedRef=useRef(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
@@ -72,13 +82,14 @@ function immediateActions() {
               placeholder="Enter message..."
               defaultValue={""}
               value={msg} 
-              onClick={(e) => setMsg(e.target.value)}
+              onChange={(e) => setMsg(e.target.value)}
             />
             <button type="button" class="mx-80 my-2 text-white bg-lime-600 hover:bg-lime-600 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-lime-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => Submit()}>Submit</button>
 
           </>
           
           }
+          {a && <div className='flex justify-center items-center'>{a}</div>}
 <div className="ml-24 my-24">
     
     <table class="class=state-fixed  border-2 border-lime-600 text-center" >

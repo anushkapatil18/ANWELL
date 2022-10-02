@@ -5,9 +5,6 @@ import { useState,useRef,useEffect } from 'react';
 function AnimalDetails() {
   const[t,setT] = useState(false);
 
-  const handleChange = () => {
-    setT(true);
-  }
 
   var token = "Bearer "+localStorage.getItem("token");
   const[data,setData] = useState([]);
@@ -25,6 +22,26 @@ function AnimalDetails() {
     setData(content.animal);
   }
 
+  const[animal,setAnimal] = useState([]);
+  async function CallApi2(a){
+    const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/getAnimalById", {
+      method: "POST",
+      headers: { 
+        "Authorization": token,
+        "Content-Type": "application/json" },
+        body: JSON.stringify({id: a})
+    });
+    const content = await response.json();
+    console.log(content);
+    setAnimal(content.animal);
+    console.log(animal);
+  }
+  const handleChange = (e) => {
+    setT(true);
+    CallApi2(e.target.value);
+  }
+
+
 
   const dataFetchedRef=useRef(false);
   useEffect(() => {
@@ -40,7 +57,7 @@ function AnimalDetails() {
             <select onChange={(e) => handleChange(e)} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
             <option disabled selected value> -- select an option -- </option>
             {data.map((c) => {
-              return(<option value={c.id}>{c.id}</option>)
+              return(<option value={c._id}>{c.id}</option>)
             })}
             </select>
         </div>
@@ -64,14 +81,13 @@ function AnimalDetails() {
                 Past surgeries
               </th>
             </tr>
-          </thead>
-          <tbody>
+          </thead> <tbody>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
                 className="p-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                2367
+                23405
               </th>
               <td className="px-10 py-36">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis optio consequatur id est labore. Ullam reiciendis nam ipsam quasi magnam suscipit exercitationem, pariatur eligendi repudiandae tempore velit est iusto quis?</td>
               <td className="px-10 py-36">78.8Kg</td>

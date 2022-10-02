@@ -53,7 +53,7 @@ function ReportOfCaretakers() {
     <>
     <div className="relative w-full lg:max-w-sm p-1.5 my-6 mx-96">
             <select onChange={(e) => handleChange(e)} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
-            <option disabled selected value="hello"> -- select an option -- </option>
+            <option disabled selected value=""> -- select an option -- </option>
             {contacts.map((cop) => {
              return(<option value={cop._id}>{cop.id} - {cop.name}</option>)
           })}
