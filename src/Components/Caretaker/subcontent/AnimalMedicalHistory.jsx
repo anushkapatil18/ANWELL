@@ -23,7 +23,7 @@ function AnimalDetails() {
   }
 
   const[animal,setAnimal] = useState([]);
-  async function CallApi2(a){
+  async function CallApi(a){
     const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/getAnimalById", {
       method: "POST",
       headers: { 
@@ -38,7 +38,7 @@ function AnimalDetails() {
   }
   const handleChange = (e) => {
     setT(true);
-    CallApi2(e.target.value);
+    CallApi(e.target.value);
   }
 
 

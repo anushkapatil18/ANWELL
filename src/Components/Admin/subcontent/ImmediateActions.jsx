@@ -34,7 +34,7 @@ function immediateActions() {
     setT(false);
     setA(content.message);
     setTimeout(function(){
-      setM("");
+      setA("");
     },5000);
     setT(true);
   }
