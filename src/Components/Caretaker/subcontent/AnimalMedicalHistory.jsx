@@ -5,7 +5,6 @@ import { useState,useRef,useEffect } from 'react';
 function AnimalDetails() {
   const[t,setT] = useState(false);
 
-
   var token = "Bearer "+localStorage.getItem("token");
   const[data,setData] = useState([]);
 
@@ -18,7 +17,6 @@ function AnimalDetails() {
         body: JSON.stringify({id: localStorage.getItem("id")})
     });
     const content = await response.json();
-    console.log(content);
     setData(content.animal);
   }
 
@@ -32,23 +30,20 @@ function AnimalDetails() {
         body: JSON.stringify({id: a})
     });
     const content = await response.json();
-    console.log(content);
-    setAnimal(content.animal);
-    console.log(animal);
+    setAnimal(current=>[...current,content.animal]);
   }
+
   const handleChange = (e) => {
     setT(true);
     CallApi(e.target.value);
   }
-
-
 
   const dataFetchedRef=useRef(false);
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
     CallApi2();
-  }, [])
+  })
   
 
   return (
@@ -83,10 +78,10 @@ function AnimalDetails() {
             </tr>
           </thead> 
           
-          {animal.map((c) =>{
+          {animal.map((c,index) =>{
             return (
-              <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <tbody >
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
                 <th
                   scope="row"
                   className="p-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"

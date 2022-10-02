@@ -22,7 +22,7 @@ function UserPage() {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
     CallApi();
-  }, [])
+  })
   return (
     <div>
       <nav className="bg-lime-200">
@@ -160,7 +160,7 @@ function UserPage() {
     height:"100%",
 	backgroundPosition: "center",
 	backgroundRepeat: "no-repeat",
-	backgroundSize: "cover"}}className="py-8 px-80 bg-slate-100 text-white text-xl">
+	backgroundSize: "cover"}} className="py-8 px-80 bg-slate-100 text-white text-xl">
 		<marquee class="marq"
 				direction="down"
 				behavior="scroll"
