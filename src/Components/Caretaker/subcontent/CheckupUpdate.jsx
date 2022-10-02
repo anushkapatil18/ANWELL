@@ -14,7 +14,7 @@ function CheckUpdate() {
     const[a,setA] = useState("");
 
   const handleSubmit = async() => {
-    const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/createMessage", {
+   const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/createMessage", {
       method: "POST",
       headers: { 
         "Authorization": token,
@@ -26,7 +26,7 @@ function CheckUpdate() {
   setA(content.message);
   setTimeout(function(){
     setA("");
-  },5000);
+  },5000); 
 
 
 }
@@ -68,7 +68,7 @@ function CheckUpdate() {
               <td className='px-6 py-4 whitespace-nowrap'><select onChange={(e) => setId(e.target.value)} className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
             <option disabled selected value> -- select an option -- </option>
             {data.map((c) => {
-              return(<option value={c.id}>{c.id}</option>)
+              return(<option value={c._id}>{c.id}</option>)
             })}
             </select></td>
             </tr>
