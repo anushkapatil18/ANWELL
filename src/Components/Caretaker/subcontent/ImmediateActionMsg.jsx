@@ -30,7 +30,7 @@ useEffect(() => {
   return (
    <>
     {
-     t  ? (<>{msg}</>) : "NO MESSAGE"
+     t  ? (<div className='flex justify-center items-center mt-5 text-2xl'>{msg}</div>) : "NO MESSAGE"
     }
     </>
 
