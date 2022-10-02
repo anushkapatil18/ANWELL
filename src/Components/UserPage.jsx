@@ -161,18 +161,16 @@ function UserPage() {
 	backgroundPosition: "center",
 	backgroundRepeat: "no-repeat",
 	backgroundSize: "cover"}}className="py-8 px-80 bg-slate-100 text-white text-xl">
-		<marquee class="marq"
+		
+      {news.map((c) => {
+        return(<marquee class="marq"
 				direction="down"
 				behavior="scroll"
-		loop="60">
-      {news.map((c) => {
-        return(
-          <p className='p-4 h-60'>Title: {c.title}<br/>Date: {c.date}<br/> {c.description}</p>
+		loop="20">
+          <p className='p-4 h-40'>Title: {c.title}<br/>Date: {c.date}<br/> {c.description}</p></marquee>
         )
       })}
-	
 		
-		</marquee>
 	</div>
     </div>
   );

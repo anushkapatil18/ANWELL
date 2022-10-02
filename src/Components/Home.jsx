@@ -1,9 +1,11 @@
 import React,{useEffect,useRef} from 'react';
+import { useState } from 'react';
 import "../index.css"
 
 
 function Home() {
 
+	const[news,setNews] = useState([])
 	async function CallApi(){
 		const response = await fetch(process.env.REACT_APP_BASE_URL+"home/getNews", {
 		  method: "GET",
@@ -11,8 +13,11 @@ function Home() {
 			"Content-Type": "application/json" }
 		});
 		const content = await response.json();
-		console.log(content);
+		console.log(content.news);
+    setNews(content.news);
+    console.log(news);
 	  }
+    
 
 	  const dataFetchedRef=useRef(false);
   useEffect(() => {
@@ -29,14 +34,14 @@ function Home() {
 	backgroundPosition: "center",
 	backgroundRepeat: "no-repeat",
 	backgroundSize: "cover"}}className=" px-80 bg-slate-100 text-white text-xl">
-		<marquee class="marq"
+		  {news.map((c) => {
+        return(<marquee class="marq"
 				direction="down"
 				behavior="scroll"
-				loop="60">
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-		</marquee>
+		loop="20">
+          <p className='p-4 h-40'>Title: {c.title}<br/>Date: {c.date}<br/> {c.description}</p></marquee>
+        )
+      })}
 	</div>
   )
 }
