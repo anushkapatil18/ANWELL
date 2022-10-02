@@ -10,6 +10,8 @@ function CheckUpdate() {
   const[date,setDate] = useState("");
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const[id,setId] = useState("");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const[a,setA] = useState("");
 
   const handleSubmit = async() => {
     const response = await fetch(process.env.REACT_APP_BASE_URL+"caretaker/createMessage", {
@@ -21,6 +23,10 @@ function CheckUpdate() {
   });
   const content = await response.json();
   console.log(content);
+  setA(content.message);
+  setTimeout(function(){
+    setA("");
+  },5000);
 
 
 }
@@ -86,6 +92,7 @@ function CheckUpdate() {
             </tbody>
           </table>
       </div>
+      {a && <><div className="flex justify-center items-center">{a}</div></>}
     </>
   )
 }
