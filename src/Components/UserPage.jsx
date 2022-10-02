@@ -147,9 +147,9 @@ function UserPage() {
 				direction="down"
 				behavior="scroll"
 				loop="60">
-		<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
-		<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
-    	<p className='p-4 h-60'>Title<br/>Date<br/>Description</p>
+		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
+		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
+		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
 
 		</marquee>
 	</div>
