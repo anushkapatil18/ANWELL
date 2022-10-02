@@ -1,10 +1,28 @@
-import React from "react";
+import React,{useEffect,useRef,useState} from "react";
 import {Link} from 'react-router-dom';
 
 
 function UserPage() {
-    const handleSubmit = () => {
-    }
+
+  const[news,setNews] = useState([]);
+  async function CallApi(){
+		const response = await fetch(process.env.REACT_APP_BASE_URL+"home/getNews", {
+		  method: "GET",
+		  headers: { 
+			"Content-Type": "application/json" }
+		});
+		const content = await response.json();
+		console.log(content.news);
+    setNews(content.news);
+    console.log(news);
+	  }
+    
+	  const dataFetchedRef=useRef(false);
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    CallApi();
+  }, [])
   return (
     <div>
       <nav className="bg-lime-200">
@@ -146,11 +164,14 @@ function UserPage() {
 		<marquee class="marq"
 				direction="down"
 				behavior="scroll"
-				loop="60">
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-		<p className='p-4 h-60'>Title: Animal Abuse<br/>Date: 12/03/2019<br/> Hoarding behavior often victimizes animals. Sufferers of a hoarding disorder may impose severe neglect on animals by housing far more than they are able to adequately take care of. Serious animal neglect (such as hoarding) is often an indicator of people in need of social or mental health services.</p>
-
+		loop="60">
+      {news.map((c) => {
+        return(
+          <p className='p-4 h-60'>Title: {c.title}<br/>Date: {c.date}<br/> {c.description}</p>
+        )
+      })}
+	
+		
 		</marquee>
 	</div>
     </div>

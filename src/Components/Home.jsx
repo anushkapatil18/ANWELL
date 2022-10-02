@@ -1,8 +1,27 @@
-import React from 'react';
+import React,{useEffect,useRef} from 'react';
 import "../index.css"
 
 
 function Home() {
+
+	async function CallApi(){
+		const response = await fetch(process.env.REACT_APP_BASE_URL+"home/getNews", {
+		  method: "GET",
+		  headers: { 
+			"Content-Type": "application/json" }
+		});
+		const content = await response.json();
+		console.log(content);
+	  }
+
+	  const dataFetchedRef=useRef(false);
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    CallApi();
+  }, [])
+
+	
   return (
     <div style={{ 
       backgroundImage: `url("https://d2evkimvhatqav.cloudfront.net/images/_960xAUTO_crop_center-center_none/mother_cow_calf_31883069.jpg?v=1650463658,0.6021,0.4284")` ,

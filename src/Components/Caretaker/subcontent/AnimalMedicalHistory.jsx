@@ -81,20 +81,27 @@ function AnimalDetails() {
                 Past surgeries
               </th>
             </tr>
-          </thead> <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="p-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                23405
-              </th>
-              <td className="px-10 py-36">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis optio consequatur id est labore. Ullam reiciendis nam ipsam quasi magnam suscipit exercitationem, pariatur eligendi repudiandae tempore velit est iusto quis?</td>
-              <td className="px-10 py-36">78.8Kg</td>
-              <td className="px-10 py-36">nil</td>
-            </tr>
-            
-          </tbody>
+          </thead> 
+          
+          {animal.map((c) =>{
+            return (
+              <tbody>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                  scope="row"
+                  className="p-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {c.id}
+                </th>
+                <td className="px-10 py-36">{c.pastMedicalHistory}</td>
+                <td className="px-10 py-36">{c.weight}</td>
+                <td className="px-10 py-36">{c.pastSurgeries}</td>
+              </tr>
+              
+            </tbody>
+            )
+          })}
+          
         </table>
         
       </div>
